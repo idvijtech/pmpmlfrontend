@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAllTenders, getTenderById, getTendersByCategory, getAllCategories } from '../api/tenderapi';
-import './tender.css';
 
 // Simple Error Boundary Component
 class ErrorBoundary extends React.Component {
@@ -21,10 +20,15 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div style={{ padding: '2rem', textAlign: 'center' }}>
-          <h2>Something went wrong.</h2>
-          <p>Please refresh the page to try again.</p>
-          <button onClick={() => window.location.reload()}>Refresh Page</button>
+        <div className="p-8 text-center">
+          <h2 className="text-2xl font-bold mb-4">Something went wrong.</h2>
+          <p className="mb-4">Please refresh the page to try again.</p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors"
+          >
+            Refresh Page
+          </button>
         </div>
       );
     }
@@ -317,147 +321,121 @@ const TenderPage = () => {
 
   return (
     <ErrorBoundary>
-      <div className="tender-page">
-        {/* Navbar */}
-        <nav className="navbar">
-          <div className="nav-container">
-            <div className="nav-logo">
-              <h2>PMPML</h2>
-            </div>
-            <ul className="nav-menu">
-              <li className="nav-item">
-                <a href="#home" className="nav-link">Home</a>
-              </li>
-              <li className="nav-item">
-                <a href="#tenders" className="nav-link active">Tenders</a>
-              </li>
-              <li className="nav-item">
-                <a href="#about" className="nav-link">About</a>
-              </li>
-              <li className="nav-item">
-                <a href="#contact" className="nav-link">Contact</a>
-              </li>
-            </ul>
-            <div className="nav-toggle">
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-            </div>
-          </div>
-        </nav>
-
-        {/* Main Content */}
-        <main className="main-content">
-          <div className="container">
+      <div className="min-h-screen bg-gray-50">
+        <main>
+          <div className="w-full max-w-7xl mx-auto px-4 md:px-8 flex flex-col items-center">
             {/* Header Section */}
-            <div className="header-section">
-              <h1 className="page-title">Tender Management</h1>
-              <p className="page-subtitle">Browse and manage all available tenders</p>
+            <div className="text-center mb-12 px-4 w-full">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2">Tender Management</h1>
+              <p className="text-lg text-gray-600 font-normal">Browse and manage all available tenders</p>
             </div>
 
-                      {/* Search and Filter Section */}
-          <div className="search-filter-section">
-            <div className="search-container">
-              <label className="search-label">Search Tenders</label>
-              <div className="search-input-wrapper">
-                <svg className="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <input
-                  type="text"
-                  className="search-input"
-                  placeholder="Search by tender title..."
-                  value={searchQuery}
-                  onChange={handleSearchChange}
-                />
+            {/* Search and Filter Section */}
+            <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-5 mb-6 flex items-end gap-4 flex-wrap shadow-lg w-full">
+              <div className="flex flex-col gap-2 flex-2 min-w-[220px]">
+                <label className="font-semibold text-gray-800 text-sm mb-1">Search Tenders</label>
+                <div className="relative flex items-center">
+                  <svg className="absolute left-3 text-gray-500 z-10" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <input
+                    type="text"
+                    className="w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg text-sm bg-white transition-all duration-300 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100 placeholder-gray-500"
+                    placeholder="Search by tender title..."
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2 flex-1 min-w-[160px]">
+                <label className="font-semibold text-gray-800 text-sm mb-1">Category</label>
+                <select 
+                  className="w-full px-3 py-3 border border-gray-300 rounded-lg text-sm bg-white cursor-pointer transition-all duration-300 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
+                  value={selectedCategory}
+                  onChange={handleCategoryChange}
+                >
+                  <option value="">All Categories</option>
+                  {categories
+                    .filter(category => category.title) // Only show categories with titles
+                    .map(category => (
+                      <option key={category.id} value={category.title}>
+                        {category.title}
+                      </option>
+                    ))}
+                </select>
+              </div>
+
+              <div className="flex flex-col gap-2 flex-1 min-w-[160px]">
+                <label className="font-semibold text-gray-800 text-sm mb-1">Status</label>
+                <select 
+                  className="w-full px-3 py-3 border border-gray-300 rounded-lg text-sm bg-white cursor-pointer transition-all duration-300 focus:outline-none focus:border-blue-500 focus:ring-3 focus:ring-blue-100"
+                  value={selectedStatus}
+                  onChange={handleStatusChange}
+                >
+                  <option value="">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="closed">Closed</option>
+                  <option value="upcoming">Upcoming</option>
+                </select>
+              </div>
+
+              <div className="flex-none">
+                <button 
+                  className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 border-none rounded-lg text-white text-sm font-semibold cursor-pointer transition-all duration-300 whitespace-nowrap shadow-lg hover:from-purple-700 hover:to-purple-800 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
+                  onClick={clearFilters}
+                >
+                  Clear Filters
+                </button>
               </div>
             </div>
 
-            <div className="filter-container">
-              <label className="filter-label">Category</label>
-              <select 
-                className="filter-select" 
-                value={selectedCategory}
-                onChange={handleCategoryChange}
-              >
-                <option value="">All Categories</option>
-                {categories
-                  .filter(category => category.title) // Only show categories with titles
-                  .map(category => (
-                    <option key={category.id} value={category.title}>
-                      {category.title}
-                    </option>
-                  ))}
-              </select>
-            </div>
-
-            <div className="filter-container">
-              <label className="filter-label">Status</label>
-              <select 
-                className="filter-select" 
-                value={selectedStatus}
-                onChange={handleStatusChange}
-              >
-                <option value="">All Status</option>
-                <option value="active">Active</option>
-                <option value="closed">Closed</option>
-                <option value="upcoming">Upcoming</option>
-              </select>
-            </div>
-
-            <div className="clear-filters-container">
-              <button 
-                className="clear-filters-btn"
-                onClick={clearFilters}
-              >
-                Clear Filters
-              </button>
-            </div>
-          </div>
-
-          {/* Tender Section */}
-          <section className="tender-section">
-            <div className="section-header">
-              <h2>Available Tenders</h2>
-            </div>
+            {/* Tender Section */}
+            <section className="bg-white rounded-xl p-8 shadow-lg mb-8 w-full">
+              <div className="mb-8 text-center">
+                <h2 className="text-3xl text-gray-800 font-semibold">Available Tenders</h2>
+              </div>
 
               {/* Loading State */}
               {loading && (
-                <div className="loading-container">
-                  <div className="loading-spinner"></div>
+                <div className="text-center py-12 text-gray-600">
+                  <div className="border-4 border-gray-300 border-t-blue-500 rounded-full w-12 h-12 animate-spin mx-auto mb-4"></div>
                   <p>Loading tenders...</p>
                 </div>
               )}
 
               {/* Error State */}
               {error && (
-                <div className="error-container">
-                  <p className="error-message">{error}</p>
-                  <button onClick={() => fetchTenders(selectedCategory)} className="retry-btn">
+                <div className="text-center py-12">
+                  <p className="text-red-500 font-medium mb-4">{error}</p>
+                  <button 
+                    onClick={() => fetchTenders(selectedCategory)} 
+                    className="bg-blue-500 hover:bg-blue-600 text-white border-none px-6 py-3 rounded-lg cursor-pointer font-medium transition-colors duration-300"
+                  >
                     Retry
                   </button>
                 </div>
               )}
 
-                          {/* Tenders Table */}
-            {!loading && !error && (
-              <div className="tenders-table-container">
-                {filteredTenders.length === 0 ? (
-                  <div className="no-tenders">
-                    <p>No tenders found matching your search criteria.</p>
-                  </div>
-                ) : (
-                    <div className="tenders-table">
-                      <div className="table-header">
-                        <div className="header-cell">Tender Title</div>
-                        <div className="header-cell">Description</div>
-                        <div className="header-cell">Release Date</div>
-                        <div className="header-cell">Status</div>
-                        <div className="header-cell">View Document</div>
-                        <div className="header-cell">Apply</div>
+              {/* Tenders Table */}
+              {!loading && !error && (
+                <div className="w-full overflow-x-auto">
+                  {filteredTenders.length === 0 ? (
+                    <div className="text-center py-12 text-gray-600 text-lg">
+                      <p>No tenders found matching your search criteria.</p>
+                    </div>
+                  ) : (
+                    <div className="w-full rounded-2xl overflow-hidden shadow-lg bg-white">
+                      <div className="bg-gradient-to-r from-orange-500 to-orange-600 flex text-white font-semibold text-sm rounded-t-2xl">
+                        <div className="flex-2 min-w-[200px] p-4 text-left">Tender Title</div>
+                        <div className="flex-2 min-w-[200px] p-4 text-left">Description</div>
+                        <div className="flex-1 min-w-[120px] p-4 text-left">Release Date</div>
+                        <div className="flex-[0.8] min-w-[100px] p-4 text-left">Status</div>
+                                                 <div className="flex-[1.2] min-w-[150px] p-4 text-left">View Details</div>
+                        <div className="flex-1 min-w-[120px] p-4 text-left">Apply</div>
                       </div>
-                                          <div className="table-body">
-                      {currentTenders.map((tender, index) => {
+                      <div className="max-h-[600px] overflow-y-auto">
+                        {currentTenders.map((tender, index) => {
                           // Validate tender object
                           if (!tender || typeof tender !== 'object') {
                             console.log('Invalid tender object:', tender);
@@ -467,43 +445,53 @@ const TenderPage = () => {
                           return (
                             <div 
                               key={tender.id || `tender-${index}`} 
-                              className={`table-row ${index % 2 === 0 ? 'even' : 'odd'}`}
+                              className={`flex transition-colors duration-200 border-b border-gray-200 hover:bg-gray-50 ${
+                                index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+                              }`}
                             >
-                              <div className="table-cell tender-title">
+                              <div className="flex-2 min-w-[200px] p-4 flex items-center font-semibold text-gray-800">
                                 {tender.title ? String(tender.title) : 'Untitled Tender'}
                               </div>
-                              <div className="table-cell tender-description">
+                              <div className="flex-2 min-w-[200px] p-4 flex items-start text-gray-600 leading-relaxed text-left justify-start break-words">
                                 {formatDescription(tender.description)}
                               </div>
-                              <div className="table-cell tender-release-date">
+                              <div className="flex-1 min-w-[120px] p-4 flex items-center font-medium text-gray-700">
                                 {formatDate(tender.ReleaseDate)}
                               </div>
-                                                        <div className="table-cell tender-status">
-                            <span className={`status-badge ${tender.status1 ? tender.status1.toLowerCase() : 'active'}`}>
-                              {tender.status1 ? tender.status1.toUpperCase() : 'ACTIVE'}
-                            </span>
-                          </div>
-                              <div className="table-cell tender-actions">
-                                <button 
-                                  className="view-details-btn"
-                                  onClick={() => handleTenderClick(tender.id)}
-                                >
-                                  View Document
-                                </button>
-                                {tender.PDF && (
-                                  <a 
-                                    href={`${tender.PDF}`} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="document-link"
-                                  >
-                                    View PDF
-                                  </a>
-                                )}
+                              <div className="flex-[0.8] min-w-[100px] p-4 flex items-center">
+                                <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider inline-block text-center min-w-[80px] ${
+                                  tender.status1?.toLowerCase() === 'active' 
+                                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg' 
+                                    : tender.status1?.toLowerCase() === 'closed'
+                                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg'
+                                    : 'bg-gradient-to-r from-yellow-500 to-yellow-600 text-white shadow-lg'
+                                }`}>
+                                  {tender.status1 ? tender.status1.toUpperCase() : 'ACTIVE'}
+                                </span>
                               </div>
-                              <div className="table-cell tender-apply">
+                              <div className="flex-[1.2] min-w-[150px] p-4 flex items-center">
+                                <div className="flex gap-2 flex-wrap">
+                                                                     <button 
+                                     className="bg-gradient-to-r from-green-500 to-green-600 text-white border-none px-4 py-2 rounded-full cursor-pointer text-xs font-semibold transition-all duration-300 whitespace-nowrap hover:-translate-y-0.5 hover:shadow-lg"
+                                     onClick={() => handleTenderClick(tender.id)}
+                                   >
+                                     View Details
+                                   </button>
+                                  {tender.PDF && (
+                                    <a 
+                                      href={`${tender.PDF}`} 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                      className="text-blue-600 underline font-medium text-xs transition-colors duration-200 whitespace-nowrap hover:text-blue-800 hover:no-underline"
+                                    >
+                                      View PDF
+                                    </a>
+                                  )}
+                                </div>
+                              </div>
+                              <div className="flex-1 min-w-[120px] p-4 flex items-center">
                                 <button 
-                                  className="apply-btn"
+                                  className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-none px-4 py-2 rounded-full cursor-pointer text-xs font-semibold transition-all duration-300 whitespace-nowrap hover:from-blue-600 hover:to-blue-700 hover:-translate-y-0.5 hover:shadow-lg"
                                   onClick={() => handleApplyClick(tender.id)}
                                 >
                                   Apply
@@ -520,17 +508,17 @@ const TenderPage = () => {
 
               {/* Pagination */}
               {!loading && !error && filteredTenders.length > 0 && (
-                <div className="pagination-container">
-                  <div className="pagination-controls">
+                <div className="flex flex-col items-center gap-6 mt-8 p-8 bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-white/20 backdrop-blur-sm">
+                  <div className="flex items-center gap-3 flex-wrap justify-center">
                     <button 
-                      className="pagination-btn"
+                      className="bg-gradient-to-r from-purple-600 to-purple-700 text-white border-none px-6 py-3 rounded-xl cursor-pointer text-sm font-semibold transition-all duration-300 min-w-[100px] shadow-lg relative overflow-hidden hover:from-purple-700 hover:to-purple-800 hover:-translate-y-0.5 hover:shadow-xl disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed disabled:transform-none disabled:opacity-70"
                       onClick={handlePreviousPage}
                       disabled={currentPage === 1}
                     >
                       Previous
                     </button>
                     
-                    <div className="page-numbers">
+                    <div className="flex items-center gap-2 bg-white p-2 rounded-xl shadow-lg">
                       {Array.from({ length: totalPages }, (_, index) => {
                         const pageNumber = index + 1;
                         // Show first page, last page, current page, and pages around current page
@@ -542,7 +530,11 @@ const TenderPage = () => {
                           return (
                             <button
                               key={pageNumber}
-                              className={`page-btn ${pageNumber === currentPage ? 'active' : ''}`}
+                              className={`bg-white text-gray-700 border-2 border-gray-200 px-4 py-3 rounded-lg cursor-pointer text-sm font-semibold transition-all duration-300 min-w-[45px] text-center relative overflow-hidden hover:bg-gray-50 hover:border-blue-500 hover:-translate-y-0.5 hover:shadow-lg ${
+                                pageNumber === currentPage 
+                                  ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white border-orange-500 shadow-lg -translate-y-0.5' 
+                                  : ''
+                              }`}
                               onClick={() => handlePageChange(pageNumber)}
                             >
                               {pageNumber}
@@ -552,14 +544,14 @@ const TenderPage = () => {
                           pageNumber === currentPage - 2 ||
                           pageNumber === currentPage + 2
                         ) {
-                          return <span key={pageNumber} className="page-ellipsis">...</span>;
+                          return <span key={pageNumber} className="text-gray-500 font-semibold px-3 text-lg">...</span>;
                         }
                         return null;
                       })}
                     </div>
                     
                     <button 
-                      className="pagination-btn"
+                      className="bg-gradient-to-r from-purple-600 to-purple-700 text-white border-none px-6 py-3 rounded-xl cursor-pointer text-sm font-semibold transition-all duration-300 min-w-[100px] shadow-lg relative overflow-hidden hover:from-purple-700 hover:to-purple-800 hover:-translate-y-0.5 hover:shadow-xl disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed disabled:transform-none disabled:opacity-70"
                       onClick={handleNextPage}
                       disabled={currentPage === totalPages}
                     >
@@ -569,22 +561,18 @@ const TenderPage = () => {
                 </div>
               )}
             </section>
-
-
           </div>
         </main>
         
         {/* Scroll to top button */}
         {showScrollTop && (
           <button 
-            className="scroll-to-top" 
+            className="fixed bottom-8 right-8 w-12 h-12 bg-gray-200 border-none rounded-full cursor-pointer flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:bg-gray-300 hover:-translate-y-1 before:content-['↑'] before:text-xl before:font-bold before:text-gray-600" 
             onClick={scrollToTop}
             title="Scroll to top"
           >
           </button>
         )}
-
-
       </div>
     </ErrorBoundary>
   );

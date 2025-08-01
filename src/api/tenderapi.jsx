@@ -50,7 +50,7 @@ export const getTendersByCategory = async (category) => {
     console.log('Fetching tenders by category:', category);
     
     // First get all tenders with category population
-    const response = await fetch(`${API_BASE_URL}/tenders?populate[category]=true&populate[viewdetails]=true&populate[ApplyNow]=true`, {
+    const response = await fetch(`${API_BASE_URL}/tenders?populate[category]=true&populate[viewdetails]=true`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
