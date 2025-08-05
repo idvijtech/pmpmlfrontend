@@ -1,0 +1,98 @@
+{
+  "navbar": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "modules": "Modules",
+    "features": "Features",
+    "tender": "Tender",
+    "career": "Career",
+    "contactUs": "Contact Us"
+  },
+  "hero": {
+    "reliablePublicTransport": "Reliable Public Transport",
+    "since1940": "Since 1940",
+    "routesAndTime": "Routes & Time"
+  },
+  "updates": {
+    "newUpdates": "New Updates PMPML"
+  },
+  "services": {
+    "scheduleAService": "Schedule a Service",
+    "busPasses": "Bus Passes",
+    "tenderAndAdvertisement": "Tender & Advertisement",
+    "situationalAgreement": "Situational Agreement",
+    "puneDarshanAndLogistics": "Pune Darshan & Logistics",
+    "bookNow": "Book Now",
+    "busPassesDesc": "Dedicated to delivering top-notch services through teamwork, aiming for passenger satisfaction and a leading position in the transportation industry.",
+    "tenderDesc": "PMPML introduced Cargo and Parcel Services in June 2020, offering transportation of goods across the state and neighboring areas. With competitive rates and reliable service.",
+    "situationalDesc": "PMPML offers bus rental services for weddings, events, and special occasions at competitive rates. Opt for their chartered service for a safe and comfortable journey.",
+    "puneDarshanDesc": "PMPML Introduced Cargo and Parcel Services in June 2020, offering transportation of goods across the state and neighboring areas. With reliable delivery and tracking."
+  },
+  "social": {
+    "socialMediaUpdates": "Social Media Updates"
+  },
+  "news": {
+    "newsAndUpdates": "News & Updates"
+  },
+  "gallery": {
+    "gallery": "Gallery"
+  },
+  "about": {
+    "aboutPMPMLTitle": "About PMPML",
+    "servingSince1940": "Serving Since 1940",
+    "drivingPuneForward": "PMPML: Driving Pune Forward",
+    "pmpmlLifeline": "PMPML is the lifeline of Pune — a city where tradition meets innovation. As the cultural capital of Maharashtra has evolved into a hub of education, employment, and entrepreneurship, PMPML has been there every step of the way, connecting the city with safe, sustainable, and affordable public transport.",
+    "journeyHistory": "Our journey began in the 1940s with just 20 buses under Pune Nagarpalika. By 1950, we became Pune Municipal Transport (PMT), and in 1974, Pimpri Chinchwad's transport (PCMT) began operations. The year 2007 marked a historic milestone when PMT and PCMT merged to form PMPML – Pune Mahanagar Parivahan Mahamandal Ltd. Since then, we've powered the pulse of Pune and Pimpri-Chinchwad, making mobility smarter and greener every day.",
+    "pmpmlVision": "PMPML Vision",
+    "pmpmlCommitment": "PMPML is committed to provide consistently high quality of services and to continuously improve the services through a process of teamwork for the utmost satisfaction of the passengers and to attain a position of pre-eminence in the Bus Transport sector.",
+    "legacyOfPMPML": "Legacy of PMPML: A Journey Through Time",
+    "beginning1940s": "1. The Beginning - 1940s",
+    "beginning1940sDesc": "The humble beginnings of Pune's public transport in the early 1940s, initially relying on horse-drawn tangas. Pune Nagarpalika then initiated a public bus service, assigning the task to M/s Silver Jubilee Motors. The service started with 20 buses on 4 routes and expanded to 46 buses by 1948.",
+    "formationPMT1950": "2. Formation of PMT - 1950",
+    "formationPMT1950Desc": "The official launch of Pune Municipal Transport (PMT) in 1950, following the establishment of the Pune Municipal Corporation (PMC). PMT was formed under the BPMC Act of 1949, starting with 57 buses covering 14 routes, and grew rapidly to meet the city's increasing mobility needs.",
+    "formationPCMT1974": "3. Formation of PCMT - 1974",
+    "formationPCMT1974Desc": "The formation of Pimpri Chinchwad Municipal Transport (PCMT) on March 4, 1974, to serve the growing Pimpri-Chinchwad region. It began with 8 buses on a single route between Pimpri and Bhosari. By 1988, PCMT had expanded significantly, operating 101 buses on 13 routes with 45 schedules.",
+    "unificationPMPML2007": "4. Unification into PMPML - 2007",
+    "unificationPMPML2007Desc": "The merger of PMT and PCMT by the Government of Maharashtra on October 19, 2007. This merger formed the Pune Mahanagar Parivahan Mahamandal Ltd. (PMPML), incorporated under the Companies Act, 1956. PMPML was established as a unified entity to provide integrated, efficient, reliable, safe, affordable, and accessible transport services across the twin cities for all citizens.",
+    "pmpmlLeadershipTeam": "PMPML Leadership Team",
+    "faq": "FAQ",
+    "typesOfPasses": "1. Types of Passes Offered by PMPML",
+    "typesOfPassesDesc": "PMPML provides various types of travel passes for the convenience of passengers, including:",
+    "typesOfPassesList": "Monthly Passes for daily commuters, Student Passes at concessional rates, Senior Citizen Passes, Women Special Passes, Daily and Weekly Passes",
+    "uncleanBuses": "2. Complaints About Unclean Buses",
+    "uncleanBusesDesc": "If you find the bus unclean, you can lodge a complaint through:",
+    "uncleanBusesList": "PMPML Helpline, Official Website Complaint Section, PMPML Mobile App (if available)",
+    "busDelays": "3. Complaints About Bus Delays or Non-Punctuality",
+    "busDelaysDesc": "Passengers facing issues with untimely buses should report through:",
+    "busDelaysList": "PMPML Control Room, Online Feedback Portal, Official Complaint Email ID",
+    "misbehavior": "4. Reporting Misbehavior by Drivers or Conductors",
+    "misbehaviorDesc": "Any rude or inappropriate behavior by PMPML staff can be reported via:",
+    "misbehaviorList": "PMPML Helpline Numbers, Online Grievance Forms, Social Media Handles (Official Verified Pages)",
+    "incorrectFare": "5. Complaints About Incorrect Fare Collection",
+    "incorrectFareDesc": "If you are overcharged or charged incorrectly:",
+    "incorrectFareList": "Note down the bus number, route, time, and conductor ID (if possible), File a complaint on the PMPML website or helpline, You may also write to the PMPML Regional Transport Office",
+    "lackOfSupport": "6. Lack of Support for Women, Elderly, or Disabled Passengers",
+    "lackOfSupportDesc": "PMPML encourages inclusive travel. If the conductor fails to assist vulnerable passengers:",
+    "lackOfSupportList": "Report to PMPML Customer Service immediately, Use the online grievance redressal system for formal follow-up",
+    "rashDriving": "7. Irresponsible or Rash Driving",
+    "rashDrivingDesc": "For complaints regarding unsafe driving behavior, please report:",
+    "rashDrivingList": "Bus number, route, time, and incident details, Through the PMPML app, website, or complaint cell",
+    "followUpComplaint": "8. Following Up on a Complaint",
+    "followUpComplaintDesc": "To check the status of a submitted complaint:",
+    "followUpComplaintList": "Use your complaint reference number on the official PMPML website or helpline, Contact the PMPML Grievance Cell for escalations",
+    "suggestionsComplaints": "9. Submitting Suggestions and Complaints",
+    "suggestionsComplaintsDesc": "PMPML welcomes feedback from its passengers. You may submit your suggestions or lodge complaints through:",
+    "suggestionsComplaintsList": "Online Feedback Portal, Suggestion Boxes at Major Bus Terminals, Email or Social Media Platforms",
+    "cityTours": "10. Availability of City Tours by PMPML",
+    "cityToursDesc": "PMPML occasionally conducts city tour services and special route buses during festivals or city events. For current availability, routes, and booking details, visit the official PMPML website or inquire at your nearest PMPML depot."
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "quickLinks2": "Quick Links",
+    "aboutPMPML": "About PMPML",
+    "services": "Services",
+    "contact": "Contact",
+    "support": "Support"
+  }
+} 
